@@ -29,6 +29,7 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 .idea/                  # Project settings folder
+dsa_java.iml
 *.iml                   # Module files
 *.iws                   # Workspace files (older versions)
 out/                    # Build output folder
