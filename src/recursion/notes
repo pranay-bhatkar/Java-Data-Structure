@@ -1,0 +1,34 @@
+ What is Recursion?
+ ->  Recursion is a method of solving c computational problem where
+    the solution depends on solutions to smaller instances of the same problem.
+
+ Base case -> imp to know
+ we travel in two directions
+ - top to down (towards the base case)
+ - down to top (from the base case)
+
+ 1. base case define
+ 2. current function (work)
+ 3. inner fun call
+
+ Call Stack
+
+ printDec n=1   1
+ printDec n=2   2
+ printDec n=3   3
+ printDec n=4   4
+ printDec n=5   5
+ printDec n=6   6
+ printDec n=7   7
+ printDec n=8   8
+ printDec n=9   9
+ printDec n=10  10
+ main n=10
+
+
+ first towards the base case in call stack
+ then comes down while we print the numbers
+
+ stack overflow
+    1. parameter more
+    2. too many calls
