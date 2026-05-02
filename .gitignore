@@ -22,22 +22,3 @@ bin/
 
 ### Mac OS ###
 .DS_Store
-
-
-# IntelliJ IDEA
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
-.idea/                  # Project settings folder
-dsa_java.iml
-*.iml                   # Module files
-*.iws                   # Workspace files (older versions)
-out/                    # Build output folder
-.DS_Store               # macOS system file
-*.log                   # Log files
-
-# Optional: caches and temporary files
-*.class
-*.jar
-*.war
-*.ear
