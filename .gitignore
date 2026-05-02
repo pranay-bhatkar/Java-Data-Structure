@@ -22,3 +22,5 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+out/
