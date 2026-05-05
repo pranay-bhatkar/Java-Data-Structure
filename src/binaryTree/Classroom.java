@@ -98,7 +98,53 @@ public class Classroom {
         return new Info(diam, ht);
     }
 
+    public static boolean isIdentical(Node node, Node subRoot) {
+        if (node == null && subRoot == null) {
+            return true;
+        } else if (node == null || subRoot == null || node.data != subRoot.data) {
+            return false;
+        }
+
+        if (!isIdentical(node.left, subRoot.left)) {
+            return false;
+        }
+
+        if (!isIdentical(node.right, subRoot.right)) {
+            return false;
+        }
+
+        return true;
+
+
+    }
+
+
+    public static boolean isSubtree(Node root, Node subRoot) {
+        if (root == null) {
+            return false;
+        }
+        if (root.data == subRoot.data) {
+            if (isIdentical(root, subRoot)) {
+                return true;
+            }
+        }
+
+        boolean leftAns = isSubtree(root.left, subRoot); // left subtree -> true
+        boolean rightAns = isSubtree(root.right, subRoot); //right subtree -> true
+
+        return leftAns || rightAns;
+    }
+
     public static void main(String[] args) {
+
+        /**
+         1
+         /   \
+         2     3
+         / \   / \
+         4   5 6   7
+         */
+
 
         Node root = new Node(1);
         root.left = new Node(2);
@@ -115,6 +161,18 @@ public class Classroom {
         System.out.println("sum of nodes of the tree = " + sum(root));
 
         System.out.println("Diameter of the tree = " + diameter(root).diam);
+
+        /**
+         2
+         / \
+         4   5
+         */
+
+        Node subRoot = new Node(2);
+        subRoot.left = new Node(4);
+        subRoot.right = new Node(5);
+
+        System.out.println("subtree exist : " + isSubtree(root, subRoot));
 
     }
 
