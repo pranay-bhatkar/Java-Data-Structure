@@ -1,5 +1,9 @@
 package binaryTree;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Classroom {
     static class Node {
         int data;
@@ -135,14 +139,66 @@ public class Classroom {
         return leftAns || rightAns;
     }
 
+    static class Info2 {
+        Node node;
+        int hd;
+
+        Info2(Node node, int hd) {
+            this.node = node;
+            this.hd = hd;
+        }
+    }
+
+    public static void topView(Node root) {
+        // level order
+        Queue<Info2> q = new LinkedList<>();
+        HashMap<Integer, Node> map = new HashMap<>();
+
+        int min = 0, max = 0;
+        q.add(new Info2(root, 0));
+        q.add(null);
+
+        while (!q.isEmpty()) {
+            Info2 curr = q.remove();
+            if (curr == null) {
+                if (q.isEmpty()) {
+                    break;
+                } else {
+                    q.add(null);
+                }
+            } else {
+                if (!map.containsKey(curr.hd)) { // first time my hd is occurring
+                    map.put(curr.hd, curr.node);
+                }
+
+                if (curr.node.left != null) {
+                    q.add(new Info2(curr.node.left, curr.hd - 1));
+                    min = Math.min(min, curr.hd - 1);
+                }
+
+                if (curr.node.right != null) {
+                    q.add(new Info2(curr.node.right, curr.hd + 1));
+                    max = Math.max(max, curr.hd + 1);
+                }
+            }
+
+
+        }
+        for (int i = min; i <= max; i++) {
+            System.out.print(map.get(i).data + " ");
+        }
+        System.out.println();
+    }
+
+
     public static void main(String[] args) {
 
-        /**
-         1
-         /   \
-         2     3
-         / \   / \
-         4   5 6   7
+        /*
+                    1
+                  /   \
+                 2     3
+                / \   / \
+               4   5 6   7
          */
 
 
@@ -162,10 +218,10 @@ public class Classroom {
 
         System.out.println("Diameter of the tree = " + diameter(root).diam);
 
-        /**
-         2
-         / \
-         4   5
+        /*
+                2
+               / \
+              4   5
          */
 
         Node subRoot = new Node(2);
@@ -173,6 +229,9 @@ public class Classroom {
         subRoot.right = new Node(5);
 
         System.out.println("subtree exist : " + isSubtree(root, subRoot));
+
+        System.out.println("-----Top view of tree-----");
+        topView(subRoot);
 
     }
 
