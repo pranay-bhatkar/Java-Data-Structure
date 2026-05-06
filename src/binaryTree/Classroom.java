@@ -295,6 +295,24 @@ public class Classroom {
         return dist1 + dist2;
     }
 
+    public static int KAncestor(Node root, int n, int k) {
+        if (root == null) return -1;
+
+        if (root.data == n) return 0;
+
+        int leftDist = KAncestor(root.left, n, k);
+        int rightDist = KAncestor(root.right, n, k);
+
+        if (leftDist == -1 && rightDist == -1) return -1;
+
+        int max = Math.max(leftDist, rightDist);
+
+        if (max + 1 == k) System.out.println(root.data);
+
+        return max + 1;
+
+    }
+
     public static void main(String[] args) {
 
         /*
@@ -350,6 +368,9 @@ public class Classroom {
 
         System.out.println("-----Min dist bet Node-----");
         System.out.println(minDist(root, 4, 6));
+
+        System.out.println("----Kth ancestor of Node-----");
+        KAncestor(root, 4, 0);
     }
 
 }
