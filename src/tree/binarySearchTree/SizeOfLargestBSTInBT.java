@@ -1,4 +1,4 @@
-package binarySearchTree;
+package tree.binarySearchTree;
 
 public class SizeOfLargestBSTInBT {
     static class Node {
